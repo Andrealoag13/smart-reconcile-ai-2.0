@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "build:preview": "vite build --mode singlefile",
+    "build:cliente": "VITE_TEMA=cliente vite build --mode singlefile --outDir dist-cliente",
     "preview": "vite preview"
   },
   "dependencies": {

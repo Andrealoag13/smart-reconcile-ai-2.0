@@ -8,7 +8,11 @@ import { MovimientosTable } from "./components/Table";
 import { ConciliarModal } from "./components/Modals";
 import { DetalleModal } from "./components/Detalle";
 
+/** Si se compila con VITE_TEMA=cliente (o baufest), el tema queda fijo y no se muestra el selector "Vista". */
+const TEMA_FIJO = import.meta.env.VITE_TEMA as ThemeId | undefined;
+
 function temaInicial(): ThemeId {
+  if (TEMA_FIJO === "cliente" || TEMA_FIJO === "baufest") return TEMA_FIJO;
   const t = new URLSearchParams(window.location.search).get("tema");
   return t === "cliente" ? "cliente" : "baufest";
 }
@@ -203,14 +207,16 @@ export default function App() {
         </div>
       )}
 
-      <div className="theme-switch" role="group" aria-label="Vista de la demo">
+      {!TEMA_FIJO && (
+        <div className="theme-switch" role="group" aria-label="Vista de la demo">
         <span>Vista</span>
         {(Object.keys(THEMES) as ThemeId[]).map((id) => (
           <button key={id} aria-pressed={id === themeId} onClick={() => setThemeId(id)}>
             {THEMES[id].nombre}
           </button>
         ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

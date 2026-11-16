@@ -25,7 +25,8 @@ bancarios, Reportes, "Más filtros", edición/eliminación y vista del adjunto.
 npm install
 npm run dev            # servidor local
 npm run build          # build de producción en /dist
-npm run build:preview  # un único HTML autocontenido en /dist-preview
+npm run build:preview  # un único HTML autocontenido en /dist-preview (con selector de vista)
+npm run build:cliente  # versión solo para el cliente, sin selector, en /dist-cliente
 ```
 
 ## Temas

@@ -27,6 +27,7 @@ npm run dev            # servidor local
 npm run build          # build de producción en /dist
 npm run build:preview  # un único HTML autocontenido en /dist-preview (con selector de vista)
 npm run build:cliente  # versión solo para el cliente, sin selector, en /dist-cliente
+npm run build:docs     # regenera /docs (lo que publica GitHub Pages)
 ```
 
 ## Temas
@@ -59,3 +60,13 @@ src/
 ```
 
 Nota: los íconos son equivalentes de línea dibujados en código, no los SVG exportados del Figma.
+
+## Publicación (GitHub Pages)
+
+La carpeta `docs/` tiene las dos versiones ya compiladas:
+
+- `docs/index.html` → versión original, con selector de vista
+- `docs/cliente/index.html` → versión del cliente, sin selector
+
+GitHub Pages las publica desde la rama `main`, carpeta `/docs`. Después de cambiar el código,
+correr `npm run build:docs` y subir los cambios.

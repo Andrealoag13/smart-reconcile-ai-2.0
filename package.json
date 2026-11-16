@@ -8,7 +8,8 @@
     "build": "tsc --noEmit && vite build",
     "build:preview": "vite build --mode singlefile",
     "build:cliente": "VITE_TEMA=cliente vite build --mode singlefile --outDir dist-cliente",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:docs": "npm run build:preview && npm run build:cliente && mkdir -p docs/cliente && cp dist-preview/index.html docs/index.html && cp dist-cliente/index.html docs/cliente/index.html && touch docs/.nojekyll"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",

@@ -40,6 +40,7 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.dataset.theme = themeId;
+    if (TEMA_FIJO) document.title = themeId === "cliente" ? "Smart Reconcile AI · Pernod Ricard" : "Smart Reconcile AI";
   }, [themeId]);
 
   useEffect(() => {

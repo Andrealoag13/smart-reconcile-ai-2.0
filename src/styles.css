@@ -85,7 +85,7 @@ input, select, textarea { font: inherit; color: inherit; }
 .brand { display: flex; flex-direction: column; gap: 2px; white-space: nowrap; }
 .brand__name { font-weight: 800; font-size: 22px; letter-spacing: -1px; }
 .brand__tagline { font-size: 8.5px; letter-spacing: 0.5px; color: var(--appbar-tagline); }
-.brand--logo img { display: block; height: 30px; width: auto; }
+.brand--logo img { display: block; height: 52px; width: auto; }
 .brand-slot { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
 .brand-slot__box {
   height: 34px; padding: 0 10px;

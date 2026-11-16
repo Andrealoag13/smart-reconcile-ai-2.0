@@ -38,8 +38,8 @@ Hay dos temas, que se cambian con el selector "Vista" (abajo a la izquierda) o c
 - **Propuesta cliente** (`cliente`): paleta de partida para el cliente. Los colores están
   en `src/styles.css` bajo `[data-theme="cliente"]` y hay que ajustarlos con su manual de marca.
 
-Para poner el logo del cliente: copiar el archivo oficial a `public/logo-cliente.svg`
-y descomentar `logoSrc` en `src/themes.ts`.
+El logo del cliente está en `src/assets/logo-cliente.svg` (versión blanca, para la barra oscura).
+Para cambiarlo, reemplazar ese archivo.
 
 ## Estructura
 

@@ -1,3 +1,5 @@
+import logoCliente from "./assets/logo-cliente.svg";
+
 // Temas de la aplicación. Los colores de cada tema viven en styles.css
 // bajo [data-theme="..."]; acá solo va lo que no es CSS (textos y logo).
 
@@ -26,9 +28,8 @@ export const THEMES: Record<ThemeId, Theme> = {
   cliente: {
     id: "cliente",
     nombre: "Propuesta cliente",
-    // Para usar el logo oficial: copiar el archivo a /public/logo-cliente.svg
-    // y descomentar la línea siguiente.
-    // logoSrc: "/logo-cliente.svg",
+    // Logo oficial (blanco, para fondo oscuro). Se reemplaza en src/assets/logo-cliente.svg.
+    logoSrc: logoCliente,
     marca: "Pernod Ricard",
     subtitulo: "Automatización del flujo de CXC · by Baufest",
   },

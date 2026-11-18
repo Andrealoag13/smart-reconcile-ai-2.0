@@ -296,15 +296,20 @@ input, select, textarea { font: inherit; color: inherit; }
 .c-nrec { width: 92px; flex-shrink: 0; }
 .c-mrec { width: 108px; flex-shrink: 0; }
 .c-acc { width: 90px; flex-shrink: 0; }
+/* La columna Acciones queda fija a la derecha: se ve aunque la tabla necesite scroll horizontal. */
+.t-cell.c-acc, .t-th.c-acc, .t-group.c-acc { position: sticky; right: 0; z-index: 1; background: var(--surface); }
+.t-head .t-th.c-acc, .t-groups .t-group.c-acc { background: var(--surface-sunken); }
+.t-cell.c-acc:has(.popover) { z-index: 5; }
 .g-mov { flex: 1 0 530px; }
 .g-conc { width: 534px; flex-shrink: 0; }
 .g-rec { width: 382px; flex-shrink: 0; }
 
 .t-item { border-bottom: 1px solid var(--border); }
 .t-row { cursor: pointer; }
-.t-row:hover { background: color-mix(in srgb, var(--surface-sunken) 60%, transparent); }
+.t-row:hover, .t-row:hover .t-cell.c-acc { background: color-mix(in srgb, var(--surface-sunken) 60%, var(--surface)); }
 .t-row--static { cursor: default; }
 .t-row--static:hover { background: none; }
+.t-row--static:hover .t-cell.c-acc { background: var(--surface); }
 .t-cell {
   height: 56px; padding: 0 12px;
   display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 2px;

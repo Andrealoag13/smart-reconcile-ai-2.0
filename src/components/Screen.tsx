@@ -169,14 +169,16 @@ export function DataTable<T>({
 }) {
   const conAcciones = Boolean(conciliar || menu);
   const fijo = columnas.reduce((a, c) => a + (c.ancho === "fill" ? 0 : c.ancho), 0) + (conAcciones ? 90 : 0);
-  const fill = Math.max(160, TOTAL - fijo);
+  // La columna flexible arranca en 180px: así las tablas entran en pantallas de ~1366px sin scroll.
+  const fill = Math.max(180, TOTAL - fijo);
+  const minimo = fijo + 180;
   const estilo = (c: Columna<T>): CSSProperties =>
-    c.ancho === "fill" ? { flex: `1 0 ${fill}px`, minWidth: 0 } : { width: c.ancho, flexShrink: 0 };
+    c.ancho === "fill" ? { flex: `1 1 ${fill}px`, minWidth: 180 } : { width: c.ancho, flexShrink: 0 };
 
   return (
     <section className="table-card">
       <div className="table-scroll">
-        <div className="table" role="table">
+        <div className="table" role="table" style={{ minWidth: minimo }}>
           <div className="t-head" role="row">
             {columnas.map((c) => (
               <div key={c.titulo} role="columnheader" className={`t-th ${c.derecha ? "end" : ""} ${c.separador ? "sep" : ""}`} style={estilo(c)}>

@@ -41,7 +41,7 @@ export function useDismiss(open: boolean, close: () => void) {
   return ref;
 }
 
-function Dropdown({
+export function Dropdown({
   etiqueta,
   valor,
   opciones,

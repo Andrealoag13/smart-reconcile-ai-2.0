@@ -12,6 +12,12 @@ const TONO: Record<string, string> = {
   Duplicado: "flag",
   Error: "danger",
   "Sin recibo": "neutral",
+  Verificado: "success",
+  "Al día": "success",
+  "Con vencidos": "danger",
+  "Sin saldo pendiente": "neutral",
+  "Con pendientes": "warning",
+  "Sin identificar": "danger",
 };
 
 export function Chip({ estado }: { estado: string }) {

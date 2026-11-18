@@ -303,6 +303,8 @@ input, select, textarea { font: inherit; color: inherit; }
 .t-item { border-bottom: 1px solid var(--border); }
 .t-row { cursor: pointer; }
 .t-row:hover { background: color-mix(in srgb, var(--surface-sunken) 60%, transparent); }
+.t-row--static { cursor: default; }
+.t-row--static:hover { background: none; }
 .t-cell {
   height: 56px; padding: 0 12px;
   display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 2px;

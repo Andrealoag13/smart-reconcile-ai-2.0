@@ -7,6 +7,7 @@ import { FILTROS_INICIALES, FilterBar, type FilterState } from "./components/Fil
 import { MovimientosTable } from "./components/Table";
 import { ConciliarModal } from "./components/Modals";
 import { DetalleModal } from "./components/Detalle";
+import { CarteraPage, ComprobantesPage, ExtractosPage, PagosPage, kpisComprobantes } from "./pages/Fase2";
 
 /** Si se compila con VITE_TEMA=cliente (o baufest), el tema queda fijo y no se muestra el selector "Vista". */
 const TEMA_FIJO = import.meta.env.VITE_TEMA as ThemeId | undefined;
@@ -37,6 +38,7 @@ export default function App() {
   const [detalle, setDetalle] = useState<string | null>(null);
   const [conciliar, setConciliar] = useState<string | null>(null);
   const [aviso, setAviso] = useState<string | null>(null);
+  const [clientePagos, setClientePagos] = useState("Todos");
 
   useEffect(() => {
     document.documentElement.dataset.theme = themeId;
@@ -55,7 +57,7 @@ export default function App() {
 
   const tabs: TabDef[] = [
     { id: "monitor", label: "Monitor", count: TOTAL_MOVIMIENTOS },
-    { id: "comprobantes", label: "Comprobantes", count: 4 },
+    { id: "comprobantes", label: "Comprobantes", count: Number(kpisComprobantes(movs)[2].valor) },
     { id: "excepciones", label: "Gestión de excepciones", count: excepciones.length },
     { id: "cartera", label: "Cartera de clientes" },
     { id: "pagos", label: "Pagos esperados", count: 4 },
@@ -180,12 +182,20 @@ export default function App() {
           </>
         )}
 
-        {tab !== "monitor" && tab !== "excepciones" && (
-          <div className="placeholder">
-            <strong>{tabs.find((t) => t.id === tab)?.label}</strong>
-            Esta pantalla todavía no está en esta entrega.
-          </div>
+        {tab === "comprobantes" && (
+          <ComprobantesPage movs={movs} onDetalle={setDetalle} onConciliar={setConciliar} onAviso={setAviso} />
         )}
+        {tab === "cartera" && (
+          <CarteraPage
+            onVerPagos={(cliente) => {
+              setClientePagos(cliente);
+              setTab("pagos");
+            }}
+            onAviso={setAviso}
+          />
+        )}
+        {tab === "pagos" && <PagosPage cliente={clientePagos} onCliente={setClientePagos} onAviso={setAviso} />}
+        {tab === "extractos" && <ExtractosPage onAviso={setAviso} />}
       </main>
 
       {mDetalle && !mConciliar && (
